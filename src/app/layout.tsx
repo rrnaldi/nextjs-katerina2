@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "@/assets/css/index.css";
 
 
 
@@ -19,15 +19,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
+
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={poppins.className}>
-      <body
-      
-      >
+      <body>
         {children}
+        {modal}
       </body>
     </html>
   );
