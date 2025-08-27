@@ -3,6 +3,7 @@ import LogoKaterina from '@/assets/images/logo-katerina.svg'
 import FlagId from '@/assets/images/flag-id.svg'
 import Slider from "@/components/Slider";
 import Categories from "@/components/Categories";
+import Packages from "@/components/Packages";
 
 export default function Home() {
   
@@ -26,7 +27,7 @@ export default function Home() {
         {/* Slider */}
       <section className="relative">
         <Slider spaceBetween={20}
-         swiperClassName="!h-[180px]"
+         swiperClassName="!h-[180px] !px-4"
           swiperSlideClassName="!max-w-xs">
             
               <div className="h-full rounded-3xl overflow-hidden relative border">
@@ -78,7 +79,18 @@ export default function Home() {
       </section>
 
        {/* Browse Category */}
-
        <Categories />
+
+        <section className="relative">
+        <h2 className="font-semibold mb-4 px-4">Most People Love It</h2>
+         <Packages show="popular" />
+        </section>
+
+        <section className="relative">
+        <h2 className="font-semibold mb-4 px-4">Fresh From Kitchen</h2>
+         <Packages show="newest" />
+        </section>
+
+       
   </>;
 }
