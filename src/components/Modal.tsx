@@ -1,78 +1,80 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
-import { ReactNode, useLayoutEffect } from "react"
+import { ReactNode, useLayoutEffect } from "react";
 import useQueryParams from "../libs/useQueryParams";
 import Link from "next/link";
 
-export type TModalRegistered = "tier" | "filter-category"
+export type TModalRegistered = "tier" | "filter-category";
 
-export type TModalPosRegistered = "center" | "bottom"
+export type TModalPosRegistered = "center" | "bottom";
 
-export function RouterBack({ 
-    className, 
-    children, 
-    onClick,
-    }: 
-    {className?: string;
-     children?: ReactNode, 
-     onClick?: () => void;
-    }) {
-    const router= useRouter()
-    return <span 
-    className={['cursor-pointer', className ? className : "absolute inset-0 z-10"].join("")}
-    onClick={() => {
-        onClick && onClick()
-        router.back()
-    }}
-
+export function RouterBack({
+  className,
+  children,
+  onClick,
+}: {
+  className?: string;
+  children?: ReactNode;
+  onClick?: () => void;
+}) {
+  const router = useRouter();
+  return (
+    <span
+      className={[
+        "cursor-pointer",
+        className ? className : "absolute inset-0 z-10",
+      ].join("")}
+      onClick={() => {
+        onClick && onClick();
+        router.back();
+      }}
     >
-        {children}
+      {children}
     </span>
+  );
 }
 
 export function PreventScrolling() {
-    useLayoutEffect(() => {
-        document.querySelector("body")!.classList.add("overflow-hidden")
+  useLayoutEffect(() => {
+    document.querySelector("body")!.classList.add("overflow-hidden");
 
-        return () => {
-            document.querySelector("body")!.classList.remove("overflow-hidden")
-        }
-    }, [])
-    return null
+    return () => {
+      document.querySelector("body")!.classList.remove("overflow-hidden");
+    };
+  }, []);
+  return null;
 }
 
 export function OpenModal({
-    className,
-    children,
-    queries,
-    modal,
-    modalPosition,
+  className,
+  children,
+  queries,
+  modal,
+  modalPosition,
 }: {
-    modal: TModalRegistered;
-    modalPosition: TModalPosRegistered;
-    queries: {
-        [key: string]: string
-    };
+  modal: TModalRegistered;
+  modalPosition: TModalPosRegistered;
+  queries: {
+    [key: string]: string;
+  };
 
-    className?: string
-    children?: ReactNode
+  className?: string;
+  children?: ReactNode;
 }) {
+  const queryParams = useQueryParams();
 
-    const queryParams = useQueryParams()
-
-    return <Link href={{ 
+  return (
+    <Link
+      href={{
         query: {
-            ...queryParams,
-            ...queries,
-            modal,
-            'modal-pos' : modalPosition
+          ...queryParams,
+          ...queries,
+          modal,
+          "modal-pos": modalPosition,
         },
-
-     }}
-     className={className}
-     >
-    </Link>
-    
+      }}
+      className={className}
+    ></Link>
+  );
 }
-

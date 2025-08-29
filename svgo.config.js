@@ -1,3 +1,3 @@
 module.exports = {
-    prefixIds:false,
+  prefixIds: false,
 };

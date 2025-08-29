@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "@/assets/css/index.css";
-
-
+import "./globals.css";
 
 const poppins = Poppins({
-  weight: ["400", "600","700"],
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
     template: "%s | Katerina",
-    default: "Katerina"
+    default: "Katerina",
   },
   description: "Healthy Foods, Asian Foods, Instant Foods",
 };
@@ -20,7 +18,6 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   modal,
-
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
@@ -28,8 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.className}>
       <body>
-         <main className="container max-w-sm mx-auto flex flex-col gap-y-5 relative pt-16">
-        {children}
+        <main className="container max-w-sm mx-auto flex flex-col gap-y-5 relative pt-16">
+          {children}
         </main>
         {modal}
       </body>
