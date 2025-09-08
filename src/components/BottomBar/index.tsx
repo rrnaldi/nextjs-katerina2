@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 
 // Import icon dari lucide-react
-import { Package, Receipt, Tag, Headphones } from "lucide-react";
+import { Home, TicketCheck, Tag, Headphones } from "lucide-react";
 
 type Props = {};
 
@@ -16,13 +16,13 @@ function BottomBar({}: Props) {
     {
       key: "homepage",
       label: "Home",
-      icon: Package,
+      icon: Home,
       slug: "/",
     },
     {
       key: "order",
       label: "Order",
-      icon: Receipt,
+      icon: TicketCheck,
       slug: "/order",
     },
     {

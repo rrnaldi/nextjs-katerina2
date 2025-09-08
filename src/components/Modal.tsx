@@ -75,6 +75,8 @@ export function OpenModal({
         },
       }}
       className={className}
-    ></Link>
+    >
+      {children}
+    </Link>
   );
 }

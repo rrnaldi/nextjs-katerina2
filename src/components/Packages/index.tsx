@@ -12,22 +12,6 @@ type Props = {
   show: TShow;
 };
 
-// export function ContentCategory({data}: {data: TPackage}) {
-//     return  <div className="flex flex-col items-center gap-y-2 relative">
-//             <figure className="w-16 aspect-square relative">
-//                 <Image
-//                 fill
-//                 src={`${process.env.HOST_API}/storage/${data.photo}`}
-//                 alt={data.name}
-//                 sizes="(max-width: 768px) 100vw"
-//                  />
-
-//             </figure>
-//             <span className="">{data.name}</span>
-//             <Link href={`/categories/${data.slug}`} className='absolute inset-0'></Link>
-//           </div>
-// }
-
 export function ContentPopular({ data }: { data: TPackage[] }) {
   if (data.length === 0) return "Tidak Ada Data";
 
@@ -56,7 +40,7 @@ export function ContentPopular({ data }: { data: TPackage[] }) {
             <span className="flex gap-x-3">
               <span className="flex gap-x-1">
                 <Image src={Notes} alt="Notes" />
-                <span className="text-gray2">Healthy</span>
+                <span className="text-gray2">{item.category.name}</span>
               </span>
               <span className="flex gap-x-1">
                 <Image src={People} alt="People" />
