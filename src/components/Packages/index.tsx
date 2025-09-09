@@ -21,39 +21,49 @@ export function ContentPopular({ data }: { data: TPackage[] }) {
       swiperClassName="!h-[260px] !px-4"
       swiperSlideClassName="!w-[240px]"
     >
-      {data.map((item) => (
-        <div
-          key={item.id}
-          className="h-full rounded-3xl overflow-hidden relative border"
-        >
-          <figure className="w-full h-full absolute">
-            <Image
-              fill
-              className="w-full h-full object-cover object-center"
-              src={`${process.env.HOST_API}/storage/${item.thumbnail}`}
-              alt={item.name}
-              sizes="(max-width: 768px) 100vw"
-            />
-          </figure>
-          <div className="absolute left-2 bottom-2 right-2 flex flex-col bg-white rounded-2xl p-3">
-            <span className="font-semibold">{item.name}</span>
-            <span className="flex gap-x-3">
-              <span className="flex gap-x-1">
-                <Image src={Notes} alt="Notes" />
-                <span className="text-gray2">{item.category.name}</span>
+      {data.map((item) => {
+        const lowestTier =
+          item.tiers.length > 0
+            ? item.tiers.reduce((min, current) =>
+                current.price < min.price ? current : min
+              )
+            : null;
+        return (
+          <div
+            key={item.id}
+            className="h-full rounded-3xl overflow-hidden relative border"
+          >
+            <figure className="w-full h-full absolute">
+              <Image
+                fill
+                className="w-full h-full object-cover object-center"
+                src={`${process.env.HOST_API}/storage/${item.thumbnail}`}
+                alt={item.name}
+                sizes="(max-width: 768px) 100vw"
+              />
+            </figure>
+            <div className="absolute left-2 bottom-2 right-2 flex flex-col bg-white rounded-2xl p-3">
+              <span className="font-semibold">{item.name}</span>
+              <span className="flex gap-x-3">
+                <span className="flex gap-x-1">
+                  <Image src={Notes} alt="Notes" />
+                  <span className="text-gray2">{item.category.name}</span>
+                </span>
+                <span className="flex gap-x-1">
+                  <Image src={People} alt="People" />
+                  <span className="text-gray2">
+                    {lowestTier?.quantity || 0}
+                  </span>
+                </span>
               </span>
-              <span className="flex gap-x-1">
-                <Image src={People} alt="People" />
-                <span className="text-gray2">125</span>
-              </span>
-            </span>
+            </div>
+            <Link
+              href={`/packages/${item.slug}`}
+              className="absolute inset-0"
+            ></Link>
           </div>
-          <Link
-            href={`/catering-packages/${item.slug}`}
-            className="absolute inset-0"
-          ></Link>
-        </div>
-      ))}
+        );
+      })}
     </Slider>
   );
 }
@@ -83,7 +93,7 @@ export function ContentNewest({
             : null;
 
         return (
-          <div key={item.id} className="flex gap-x-3">
+          <div key={item.id} className="flex gap-x-3 relative">
             <figure className="w-[120px] h-[160px] flex-none rounded-2xl overflow-hidden relative">
               <Image
                 fill
@@ -119,6 +129,10 @@ export function ContentNewest({
                 <span className="text-gray2">{item.city.name}</span>
               </span>
             </span>
+            <Link
+              href={`/packages/${item.slug}`}
+              className="absolute inset-0"
+            ></Link>
           </div>
         );
       })}

@@ -34,13 +34,12 @@ function Slider({
       modules={modules}
       className={swiperClassName}
       maxBackfaceHiddenSlides={10}
-      pagination={
-        hasPagination
-          ? {
-              clickable: true,
-            }
-          : false
-      }
+      pagination={{
+        clickable: true,
+        renderBullet: (index, className) => {
+          return `<span class="${className}"></span>`;
+        },
+      }}
     >
       {Children.toArray(children).map((slide: any) => {
         return (

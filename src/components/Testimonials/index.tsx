@@ -10,7 +10,7 @@ import PinPoint from "@/assets/images/pinpoint.svg";
 
 export function ContentTestimonials({ data }: { data: TTestimonials }) {
   return (
-    <div className="h-full rounded-3xl overflow-hidden relative border p-3 flex flex-col gap-y-3">
+    <div className="h-full rounded-3xl overflow-hidden relative border border-gray-200 p-3 flex flex-col gap-y-3">
       <span className="text-color1 flex gap-x-1">
         <Image src={Star} alt="Star" />
         <Image src={Star} alt="Star" />

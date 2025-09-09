@@ -1,7 +1,12 @@
 "use client";
 
 import React, { MouseEventHandler } from "react";
-import { CircleArrowLeft, ThumbsUp, MoreHorizontal } from "lucide-react";
+import {
+  CircleArrowLeft,
+  ThumbsUp,
+  MoreHorizontal,
+  LayoutDashboard,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -75,12 +80,18 @@ function Header({ appendClassName, back, title, more, thumbsUp }: Props) {
       )}
 
       {thumbsUp.display && (
-        <span className="" onClick={thumbsUp.onClick}>
+        <span
+          className="flex items-center justify-center bg-white rounded-full w-[52px] aspect-square text-color2"
+          onClick={thumbsUp.onClick}
+        >
           <ThumbsUp className="text-current" />
         </span>
       )}
       {more.display && (
-        <span className="" onClick={more.onClick}>
+        <span
+          className="flex items-center justify-center bg-white rounded-full w-[52px] aspect-square text-color2"
+          onClick={more.onClick}
+        >
           <MoreHorizontal className="text-current" />
         </span>
       )}
