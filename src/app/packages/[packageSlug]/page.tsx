@@ -7,6 +7,7 @@ import React from "react";
 import Image from "next/image";
 import Notes from "@/assets/images/notes.svg";
 import People from "@/assets/images/people.svg";
+import "@/libs/thousands";
 import {
   Star,
   MapPin,
@@ -228,6 +229,35 @@ async function PackageDetailsPage({ params }: Request) {
           </Link>
         </span>
       </section>
+
+      <div className="sticky bottom-4 px-4 z-50 mt-8">
+        <div className="rounded-full flex justify-between gap-x-3 bg-white shadow-[0px_12px_30px_0px_#07041517] p-3 pl-6">
+          <span className="flex flex-col">
+            <span className="font-semibold text-xl">
+              Rp{(currentTier?.price || 0).thousands()}
+            </span>
+            <span className="text-gray2 text-sm">
+              {`${currentTier?.duration || 0} day${
+                (currentTier?.duration || 0) > 1 ? "s" : ""
+              }`}
+              , {currentTier?.quantity || 0} People
+            </span>
+          </span>
+
+          {!!currentTier ? (
+            <Link
+              href={`packages/${packageSlug}/tiers`}
+              className="bg-color1 rounded-full flex items-center justify-center text-white px-5"
+            >
+              Booking Now
+            </Link>
+          ) : (
+            <span className="bg-gray1 rounded-full flex items-center justify-center text-gray-200 cursor-not-allowed px-5">
+              Booking Now
+            </span>
+          )}
+        </div>
+      </div>
     </>
   );
 }
