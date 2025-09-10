@@ -5,7 +5,8 @@ export type TTier = {
   quantity: number;
   duration: number;
   photo: string;
-  benefits: TBenefit;
+  tagline: string;
+  benefits: TBenefit[];
 };
 
 export type TBenefit = {

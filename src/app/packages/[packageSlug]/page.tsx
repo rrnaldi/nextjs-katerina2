@@ -7,7 +7,6 @@ import React from "react";
 import Image from "next/image";
 import Notes from "@/assets/images/notes.svg";
 import People from "@/assets/images/people.svg";
-import "@/libs/thousands";
 import {
   Star,
   MapPin,
@@ -246,7 +245,7 @@ async function PackageDetailsPage({ params }: Request) {
 
           {!!currentTier ? (
             <Link
-              href={`packages/${packageSlug}/tiers`}
+              href={`${packageSlug}/tiers`}
               className="bg-color1 rounded-full flex items-center justify-center text-white px-5"
             >
               Booking Now
